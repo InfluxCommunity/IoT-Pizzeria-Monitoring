@@ -1,4 +1,4 @@
-# Real-Time Data Pipeline with Kafka, Telegraf & InfluxDB 3 Core
+# Realtime Data Pipeline with Kafka, Telegraf & InfluxDB 3 Core
 
 A sample app, demonstrating streaming data pipeline using a Pizza kitchen monitoring system as an example. 
 

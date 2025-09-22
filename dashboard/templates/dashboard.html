@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="dashboard">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1><i class="fas fa-pizza-slice"></i> Papa Giuseppe's Pizzeria</h1>
+        <div class="connection-status">
+          <span id="connection-indicator" class="status-dot offline"></span>
+          <span id="connection-text">Connecting...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Control Panel -->
+    <section class="control-panel">
+      <h2><i class="fas fa-sliders-h"></i> Simulation Controls</h2>
+      <div class="controls-grid">
+        <div class="control-item">
+          <label class="switch">
+            <input type="checkbox" id="rush-mode-toggle">
+            <span class="slider"></span>
+          </label>
+          <span>🔥 Rush Hour Mode</span>
+        </div>
+
+        <div class="control-item">
+          <label class="switch">
+            <input type="checkbox" id="equipment-failure-toggle">
+            <span class="slider"></span>
+          </label>
+          <span>⚠️ Equipment Issues</span>
+        </div>
+
+        <div class="control-item">
+          <label class="switch">
+            <input type="checkbox" id="new-orders-toggle" checked>
+            <span class="slider"></span>
+          </label>
+          <span>📋 Accept New Orders</span>
+        </div>
+
+        <div class="control-item">
+          <label for="speed-control">⚡ Simulation Speed:</label>
+          <input type="range" id="speed-control" min="0.1" max="5" step="0.1" value="1">
+          <span id="speed-value">1.0x</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics Dashboard -->
+    <section class="metrics">
+      <h2><i class="fas fa-chart-bar"></i> Live Metrics</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">📋</div>
+          <div class="metric-value" id="active-orders">0</div>
+          <div class="metric-label">Active Orders</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">✅</div>
+          <div class="metric-value" id="completed-orders">0</div>
+          <div class="metric-label">Completed Today</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-icon">⏱️</div>
+          <div class="metric-value" id="avg-time">0</div>
+          <div class="metric-label">Avg Time (min)</div>
+        </div>
+
+        <div class="metric-card rush-indicator" id="rush-indicator">
+          <div class="metric-icon">🔥</div>
+          <div class="metric-value" id="rush-status">Normal</div>
+          <div class="metric-label">Current Period</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pizza Ovens -->
+    <section class="ovens-section">
+      <h2><i class="fas fa-fire"></i> Pizza Ovens</h2>
+      <div class="ovens-grid" id="ovens-container">
+        <!-- Ovens will be populated by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Recent Orders -->
+    <section class="orders-section">
+      <h2><i class="fas fa-list"></i> Recent Orders</h2>
+      <div class="orders-container">
+        <table class="orders-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Pizza</th>
+              <th>Size</th>
+              <th>Status</th>
+              <th>Duration</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="orders-list">
+            <!-- Orders will be populated by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Data Pipeline Status -->
+    <section class="pipeline-status">
+      <h2><i class="fas fa-project-diagram"></i> Data Pipeline Status</h2>
+      <div class="pipeline-flow">
+        <div class="pipeline-step">
+          <div class="step-icon">🍕</div>
+          <div class="step-name">Simulator</div>
+          <div class="step-status active" id="simulator-status">Active</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="step-icon">📡</div>
+          <div class="step-name">Kafka</div>
+          <div class="step-status active" id="kafka-status">Active</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="step-icon">🔄</div>
+          <div class="step-name">Telegraf</div>
+          <div class="step-status active" id="telegraf-status">Active</div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <div class="step-icon">💾</div>
+          <div class="step-name">InfluxDB</div>
+          <div class="step-status active" id="influxdb-status">Active</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/static/dashboard.js"></script>
+</body>
+
+</html>

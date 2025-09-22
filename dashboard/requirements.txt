@@ -1,0 +1,9 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+jinja2==3.1.2
+aiofiles==23.2.1
+influxdb3-python==0.8.0
+websockets==12.0
+python-multipart==0.0.6
+pandas==2.1.4
+pyarrow==14.0.2
